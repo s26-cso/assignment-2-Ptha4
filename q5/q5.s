@@ -9,7 +9,7 @@ buffer_left:  .space 4
 buffer_right: .space 4
 
 .section .text
-.globl _start
+.globl main
 
 main:
     # open file
