@@ -1,6 +1,7 @@
 .section .data
     fmt_digit:    .string "%d "
     newline:      .string "\n"
+    fmt_last: .string "%d"
 
 .section .text
 .globl main
@@ -104,11 +105,20 @@ print_loop:
     slli t0, s4, 2
     add  t0, t0, s6
     lw   a1, 0(t0)            # load result into a1
+
+    addi t1, s3, -1
+    beq s4, t1, print_last     # if i == n-1, use fmt_last
+
     la   a0, fmt_digit      #formatting
     call printf
 
     addi s4, s4, 1
     j    print_loop
+
+print_last:
+    la  a0, fmt_last
+    call printf
+
 
 finish:
     la   a0, newline

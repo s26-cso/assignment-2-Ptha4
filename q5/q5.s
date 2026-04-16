@@ -11,7 +11,7 @@ buffer_right: .space 4
 .section .text
 .globl _start
 
-_start:
+main:
     # open file
     li a0, -100          # cosnst for AT_FDCWD
     la a1, filename     #address of input.txt
